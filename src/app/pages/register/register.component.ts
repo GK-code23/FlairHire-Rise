@@ -27,7 +27,8 @@ export class RegisterComponent implements OnInit {
   }
 
   async OnsignUp(firstname:string,lasttname:string,email:string,phone:string,password:string){
-    await this.firebaseService.signup(email,password).catch((error)=>Swal.fire('Email Is Already Registered', " ",'warning'))
+    
+    await this.firebaseService.signup(email,password).catch((error)=>Swal.fire(error.message, " ",'warning'))
     
     if(this.firebaseService.isLoggedIn){
     this.isSignedIn=true
